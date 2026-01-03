@@ -1,0 +1,185 @@
+======================================================================
+KOLAM CLASSIFICATION SYSTEM - EVALUATION REPORT
+Date: 2025-12-28 14:30:00
+======================================================================
+
+============================================================
+CLASSIFICATION METRICS SUMMARY
+============================================================
+
+📊 Overall Accuracy: 26.67%
+
+🔍 Macro-Averaged Metrics:
+  • Precision: 13.28%
+  • Recall:    30.42%
+  • F1-Score:  18.46%
+
+📈 Per-Class Metrics:
+
+  PULLI KOLAM:
+    Precision: 15.38%
+    Recall:    30.77%
+    F1-Score:  20.51%
+    Support:   26 samples
+
+  CHUKKU KOLAM:
+    Precision: 0.00%
+    Recall:    0.00%
+    F1-Score:  0.00%
+    Support:   30 samples
+
+  LINE KOLAM:
+    Precision: 0.00%
+    Recall:    0.00%
+    F1-Score:  0.00%
+    Support:   27 samples
+
+  FREEHAND KOLAM:
+    Precision: 37.74%
+    Recall:    90.91%
+    F1-Score:  53.33%
+    Support:   22 samples
+
+🎯 Confidence Statistics:
+  Overall Mean:  31.12%
+  Correct Mean:  29.71%
+  Incorrect Mean: 31.63%
+
+⚖️  Calibration Metrics:
+  ECE: 0.1557
+  MCE: 0.5928
+  Status: ❌ Poor calibration
+
+📉 Brier Score: 0.1815
+
+============================================================
+
+                precision    recall  f1-score   support
+
+   Pulli Kolam      0.154     0.308     0.205        26
+  Chukku Kolam      0.000     0.000     0.000        30
+    Line Kolam      0.000     0.000     0.000        27
+Freehand Kolam      0.377     0.909     0.533        22
+
+      accuracy                          0.267       105
+     macro avg      0.133     0.304     0.185       105
+  weighted avg      0.117     0.267     0.163       105
+
+
+======================================================================
+ERROR ANALYSIS REPORT
+======================================================================
+
+📋 SUMMARY:
+  Total Samples: 105
+  Total Errors:  77
+  Error Rate:    73.33%
+  Accuracy:      26.67%
+
+🔄 TOP CONFUSION PATTERNS:
+  1. Line Kolam → Pulli Kolam
+     Count: 24 (22.86%)
+  2. Pulli Kolam → Freehand Kolam
+     Count: 18 (17.14%)
+  3. Chukku Kolam → Pulli Kolam
+     Count: 18 (17.14%)
+  4. Chukku Kolam → Freehand Kolam
+     Count: 12 (11.43%)
+  5. Line Kolam → Freehand Kolam
+     Count: 3 (2.86%)
+
+❌ ERRORS BY TRUE CLASS:
+
+  PULLI KOLAM:
+    Total: 26, Errors: 18
+    Error Rate: 69.23%
+    Accuracy: 30.77%
+    Misclassified as:
+      • Freehand Kolam: 18 (69.2%)
+
+  CHUKKU KOLAM:
+    Total: 30, Errors: 30
+    Error Rate: 100.00%
+    Accuracy: 0.00%
+    Misclassified as:
+      • Pulli Kolam: 18 (60.0%)
+      • Freehand Kolam: 12 (40.0%)
+
+  LINE KOLAM:
+    Total: 27, Errors: 27
+    Error Rate: 100.00%
+    Accuracy: 0.00%
+    Misclassified as:
+      • Pulli Kolam: 24 (88.9%)
+      • Freehand Kolam: 3 (11.1%)
+
+  FREEHAND KOLAM:
+    Total: 22, Errors: 2
+    Error Rate: 9.09%
+    Accuracy: 90.91%
+    Misclassified as:
+      • Pulli Kolam: 2 (9.1%)
+
+🎯 CONFIDENCE ANALYSIS:
+  Error Confidence: 31.63% (avg)
+  Correct Confidence: 29.71% (avg)
+
+  Error Distribution:
+    High Confidence Errors: 0 (0.0%)
+    Medium Confidence: 0 (0.0%)
+    Low Confidence: 77 (100.0%)
+
+💡 RECOMMENDATIONS:
+  ⚠️  Chukku Kolam has high error rate (100.0%)
+     → Review training data and feature extraction
+  ⚠️  Frequent confusion: Line Kolam → Pulli Kolam
+     → Enhance discriminative features between these classes
+
+======================================================================
+
+======================================================================
+CONFIDENCE EVALUATION REPORT
+======================================================================
+
+📊 CONFIDENCE STATISTICS:
+  Mean:   31.12%
+  Median: 28.50%
+  Std:    3.88%
+  Range:  [26.27%, 40.72%]
+  IQR:    [28.50%, 34.58%]
+
+⚖️  CALIBRATION METRICS:
+  ECE (Expected Calibration Error): 0.1557
+  MCE (Maximum Calibration Error):  0.5928
+  Quality: ❌ Poor
+
+  Calibration by Confidence Bin:
+    [0.2-0.3]: Conf=28.4%, Acc=36.4%, Gap=-7.9% (n=66)
+    [0.3-0.4]: Conf=35.6%, Acc=7.9%, Gap=+27.7% (n=38)
+    [0.4-0.5]: Conf=40.7%, Acc=100.0%, Gap=-59.3% (n=1)
+
+🔗 CONFIDENCE-ACCURACY CORRELATION:
+  Pearson r:  -0.219 (p=0.0249)
+  Spearman ρ: -0.253 (p=0.0093)
+  Strength: Weak
+  Interpretation: Weak correlation between confidence and correctness
+
+⚠️  OVERCONFIDENCE ANALYSIS:
+  Status: ✅ None detected
+
+📉 UNDERCONFIDENCE ANALYSIS:
+  Status: DETECTED (Severity: High)
+  Count: 28 (26.67%)
+  Mean Confidence: 29.71%
+  Description: 28 correct predictions with confidence <50.0%
+
+💡 RECOMMENDATIONS:
+  ⚠️  High ECE (0.1557) - Consider:
+     • Temperature scaling
+     • Platt scaling
+     • Isotonic regression
+  ⚠️  Weak confidence-accuracy correlation
+     • Improve confidence estimation
+     • Add uncertainty quantification
+
+======================================================================

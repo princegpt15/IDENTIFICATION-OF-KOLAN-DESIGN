@@ -1,0 +1,107 @@
+
+
+--- PAGE 1 ---
+
+Oriental Institute of Science & Technology, Bhopal  
+Department of C SE-AIML  
+ 
+NOTICE  
+Date: 15/11/2022  
+All the students of CSE -AIML V SEM  hereby informed that , they have to complete their Project report in the 
+format given below:           
+Report Size :    50 to 70 Pages (Minor - Project)  
+Page  Size:    A4 
+Page Layout :    Top: 1”  Bottom: 1”  
+      Left: 1.2”  Right: 1”  
+Font:         Times New Roman  
+Font Size :    Chapter Heading:     16 Bold  
+Paragraph -Heading: 14 Bold  
+Sub-Heading:   12 Bold  
+Paragraph  text:           12 Normal  
+Paragraph Spacing:                 6 pt (before ) and 6  pt (After)  
+Line spacing:                     1.5 
+Paragraph:          Justify  
+Page Border:                     Box 
+Header:                     Chapter Name  
+Footer:                      Institute Name, Page No.  
+Major Project Report:                        Hard Binding  (Black)  
+Minor  Project Report :              Spiral Binding  
+ 
+Student should  show Implementation to their respective guide and should get approval on soft copy  of the report 
+before printing. After getting approval from the guide, each project group has to email soft copy of report (PDF 
+& Doc), PPT and zip fil e of project code to the Project Coordinator , Prof. Ritu Ranjani Singh  and Pr of Uma 
+Vishwkarma . Each project group must have to submit following:  
+1. 2 hard copy of project report  
+2. 2  CD, The CD should contain  followings : 
+a. Soft copy of Report  (doc & pdf)  
+b. Project Code Folder  
+c. Presentation  
+d. Any Related material about project  like dataset etc . 
+3. Project Demonstration Video.  
+4. One Extra Copy of Published Paper with Certificate.  
+*Google Form Link: - https://forms.gle/uv2GefkggDiX9GSd7  
+                   
+                  Prof. Sreeja Nair  
+          (HOD , CSE-AIML ) 
+Copy to: Major Project Coordinator s / Minor Project Coordinator s   
+
+--- PAGE 2 ---
+
+Oriental Institute of Science & Technology, Bhopal  
+Department of CSE -AIML  
+Minor Internal Assessment Report  
+SEMESTER   SESSION  JULY -DEC -
+2022  
+PROJECT NAME   
+ 
+TEAM LEADER 
+NAME   GUIDE NAME   
+ 
+ 
+    
+ 
+PROJECT ASSESSMENT REPORT: -TO BE FILLED BY PROJECT GUIDE  
+TEAM 
+MEMBERS 
+NAME 
+WITH 
+ROLL NO.  TEAM 
+MEMBER  
+ROLE  EXCELLENT  GOOD  SATISFACTORY  NOT 
+SATISFACTORY  MARKS 
+(OUT 
+OF 50)  
+ 
+ 
+ 
+ 
+       
+ 
+ 
+ 
+ 
+       
+ 
+ 
+ 
+ 
+       
+ 
+ 
+ 
+       
+DATE OF 
+INTERNAL 
+VIVA  RECOMMANDATION & SUGGESTIONS  GUIDE SIGN  
+ 
+ 
+ 
+   
+ 
+ 
+Minor project coordinator                                                                           HOD (CSE -AIML)  
+ 
+
+--- PAGE 3 ---
+
+ 

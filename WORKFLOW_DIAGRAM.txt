@@ -1,0 +1,215 @@
+╔═══════════════════════════════════════════════════════════════════════════╗
+
+║                                                                           ║
+║           KOLAM PATTERN CLASSIFICATION - VISUAL WORKFLOW                  ║
+║                    STEP 1: DATA PREPARATION                               ║
+║                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+┌───────────────────────────────────────────────────────────────────────────┐
+│                         PHASE 1: SETUP (5 minutes)                        │
+└───────────────────────────────────────────────────────────────────────────┘
+
+    ┌─────────────────────────────────────────┐
+    │  Run: 01_create_structure.py            │
+    │                                         │
+    │  Creates:                               │
+    │  • 60+ directories                      │
+    │  • Placeholder READMEs                  │
+    │  • Structure summary                    │
+    └─────────────────────────────────────────┘
+                     │
+                     ▼
+         ┌───────────────────────┐
+         │   kolam_dataset/      │
+         │   ├── 00_raw_data/    │
+         │   ├── 01_cleaned/     │
+         │   ├── 02_split_data/  │
+         │   ├── annotations/    │
+         │   ├── reports/        │
+         │   └── scripts/        │
+         └───────────────────────┘
+
+┌───────────────────────────────────────────────────────────────────────────┐
+│                   PHASE 2: DATA COLLECTION (1-2 weeks)                    │
+└───────────────────────────────────────────────────────────────────────────┘
+
+    ┌──────────────┐   ┌──────────────┐   ┌──────────────┐   ┌──────────────┐
+    │ Photography  │   │   Web        │   │   Scanned    │   │   Digital    │
+    │ (Real Kolam) │   │  Archives    │   │   Books      │   │    Apps      │
+    └──────┬───────┘   └──────┬───────┘   └──────┬───────┘   └──────┬───────┘
+           │                  │                  │                  │
+           └──────────────────┴──────────────────┴──────────────────┘
+                                    │
+                                    ▼
+                    ┌───────────────────────────────┐
+                    │   00_raw_data/                │
+                    │   ├── pulli_kolam/            │
+                    │   ├── chukku_kolam/           │
+                    │   ├── line_kolam/             │
+                    │   └── freehand_kolam/         │
+                    │                               │
+                    │   Target: 200-500 images/class│
+                    └───────────────────────────────┘
+
+┌───────────────────────────────────────────────────────────────────────────┐
+│                    PHASE 3: DATA CLEANING (2-3 days)                      │
+└───────────────────────────────────────────────────────────────────────────┘
+
+    ┌─────────────────────────────────────────┐
+    │  Run: 02_clean_dataset.py               │
+    │                                         │
+    │  Validates:                             │
+    │  ✓ Resolution ≥224×224                  │
+    │  ✓ Blur (Laplacian variance)           │
+    │  ✓ Brightness (15-240 range)           │
+    │  ✓ File corruption                     │
+    └─────────────────────────────────────────┘
+                     │
+         ┌───────────┴───────────┐
+         │                       │
+         ▼                       ▼
+    ┌─────────┐           ┌────────────┐
+    │ VALID   │           │  REJECTED  │
+    │ Images  │           │  Images    │
+    └────┬────┘           └────────────┘
+         │
+         ▼
+    ┌───────────────────────────────┐
+    │   01_cleaned_data/            │
+    │   ├── pulli_kolam/            │
+    │   ├── chukku_kolam/           │
+    │   ├── line_kolam/             │
+    │   └── freehand_kolam/         │
+    │                               │
+    │   + cleaning_report.json      │
+    └───────────────────────────────┘
+
+┌───────────────────────────────────────────────────────────────────────────┐
+│                   PHASE 4: ANNOTATION (3-5 days)                          │
+└───────────────────────────────────────────────────────────────────────────┘
+
+    ┌─────────────────────────────────────────┐
+    │  Run: 04_generate_annotations.py        │
+    │                                         │
+    │  Extracts:                              │
+    │  • Filename, category, category_id      │
+    │  • Resolution (width, height)           │
+    │  • File size, channels                  │
+    │  • Relative path, split info            │
+    │                                         │
+    │  Optional metadata:                     │
+    │  • dot_count, symmetry_type             │
+    │  • grid_type, complexity                │
+    │  • quality_score, source                │
+    └─────────────────────────────────────────┘
+                     │
+                     ▼
+    ┌───────────────────────────────────────┐
+    │   annotations/                        │
+    │   ├── cleaned_annotations.csv         │
+    │   ├── cleaned_annotations.json        │
+    │   ├── sample_annotations.csv          │
+    │   └── annotation_summary.json         │
+    └───────────────────────────────────────┘
+
+┌───────────────────────────────────────────────────────────────────────────┐
+│                    PHASE 5: DATASET SPLITTING (1 hour)                    │
+└───────────────────────────────────────────────────────────────────────────┘
+
+    ┌─────────────────────────────────────────┐
+    │  Run: 03_split_dataset.py               │
+    │                                         │
+    │  Strategy:                              │
+    │  • Stratified random split              │
+    │  • Fixed seed (42) - reproducible       │
+    │  • Equal class representation           │
+    │  • No data leakage                      │
+    └─────────────────────────────────────────┘
+                     │
+         ┌───────────┼───────────┐
+         │           │           │
+         ▼           ▼           ▼
+    ┌────────┐  ┌────────┐  ┌────────┐
+    │ TRAIN  │  │  VAL   │  │  TEST  │
+    │  70%   │  │  15%   │  │  15%   │
+    └────┬───┘  └────┬───┘  └────┬───┘
+         │           │           │
+         └───────────┴───────────┘
+                     │
+                     ▼
+    ┌───────────────────────────────────────┐
+    │   02_split_data/                      │
+    │   ├── train/                          │
+    │   │   ├── pulli_kolam/                │
+    │   │   ├── chukku_kolam/               │
+    │   │   ├── line_kolam/                 │
+    │   │   └── freehand_kolam/             │
+    │   ├── val/                            │
+    │   │   └── (same structure)            │
+    │   └── test/                           │
+    │       └── (same structure)            │
+    │                                       │
+    │   + split_statistics.json             │
+    └───────────────────────────────────────┘
+
+┌───────────────────────────────────────────────────────────────────────────┐
+│                   PHASE 6: VALIDATION (30 minutes)                        │
+└───────────────────────────────────────────────────────────────────────────┘
+
+    ┌─────────────────────────────────────────┐
+    │  Run: 05_validate_dataset.py            │
+    │                                         │
+    │  Checks:                                │
+    │  1. Directory structure ✓               │
+    │  2. Class balance ✓                     │
+    │  3. Annotation completeness ✓           │
+    │  4. Data leakage ✓                      │
+    │  5. Sample visualization ✓              │
+    └─────────────────────────────────────────┘
+                     │
+         ┌───────────┴───────────┐
+         │                       │
+         ▼                       ▼
+    ┌─────────┐           ┌────────────────┐
+    │ Reports │           │  Visualization │
+    │  (TXT)  │           │     (PNG)      │
+    │  (JSON) │           │                │
+    └─────────┘           └────────────────┘
+         │
+         ▼
+    ┌───────────────────────────────────────┐
+    │   reports/                            │
+    │   ├── cleaning_report.json            │
+    │   ├── cleaning_report.txt             │
+    │   ├── split_statistics.json           │
+    │   ├── split_statistics.txt            │
+    │   ├── validation_report.txt           │
+    │   └── sample_visualization.png        │
+    └───────────────────────────────────────┘
+
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                           FINAL OUTPUT                                    ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+┌───────────────────────────────────────────────────────────────────────────┐
+│                    READY FOR MODEL TRAINING (STEP 2)                      │
+│                                                                           │
+│  ✅ Balanced dataset (equal samples per class)                           │
+│  ✅ Clean images (validated quality)                                     │
+│  ✅ Proper splits (70/15/15, no leakage)                                 │
+│  ✅ Complete annotations (CSV + JSON)                                    │
+│  ✅ Comprehensive reports (statistics & validation)                      │
+│                                                                           │
+│  Total Images: ~2,000 (500 per class)                                   │
+│  - Train: ~1,400 (350 per class)                                        │
+│  - Val:   ~300 (75 per class)                                           │
+│  - Test:  ~300 (75 per class)                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                                                                           ║
+║                      STEP 1 COMPLETE ✅                                   ║
+║                 Ready to proceed to Step 2!                               ║
+║                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════╝

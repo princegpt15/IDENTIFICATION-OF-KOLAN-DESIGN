@@ -1,0 +1,172 @@
+======================================================================
+KOLAM CLASSIFICATION SYSTEM - EVALUATION REPORT
+Date: 2026-01-01 18:03:06
+======================================================================
+
+============================================================
+CLASSIFICATION METRICS SUMMARY
+============================================================
+
+📊 Overall Accuracy: 90.39%
+
+🔍 Macro-Averaged Metrics:
+  • Precision: 22.60%
+  • Recall:    25.00%
+  • F1-Score:  23.74%
+
+📈 Per-Class Metrics:
+
+  PULLI KOLAM:
+    Precision: 90.39%
+    Recall:    100.00%
+    F1-Score:  94.95%
+    Support:   1336 samples
+
+  CHUKKU KOLAM:
+    Precision: 0.00%
+    Recall:    0.00%
+    F1-Score:  0.00%
+    Support:   48 samples
+
+  LINE KOLAM:
+    Precision: 0.00%
+    Recall:    0.00%
+    F1-Score:  0.00%
+    Support:   48 samples
+
+  FREEHAND KOLAM:
+    Precision: 0.00%
+    Recall:    0.00%
+    F1-Score:  0.00%
+    Support:   46 samples
+
+🎯 Confidence Statistics:
+  Overall Mean:  29.98%
+  Correct Mean:  29.98%
+  Incorrect Mean: 29.98%
+
+⚖️  Calibration Metrics:
+  ECE: 0.6041
+  MCE: 0.6041
+  Status: ❌ Poor calibration
+
+📉 Brier Score: 0.1666
+
+============================================================
+
+                precision    recall  f1-score   support
+
+   Pulli Kolam      0.904     1.000     0.950      1336
+  Chukku Kolam      0.000     0.000     0.000        48
+    Line Kolam      0.000     0.000     0.000        48
+Freehand Kolam      0.000     0.000     0.000        46
+
+      accuracy                          0.904      1478
+     macro avg      0.226     0.250     0.237      1478
+  weighted avg      0.817     0.904     0.858      1478
+
+
+======================================================================
+ERROR ANALYSIS REPORT
+======================================================================
+
+📋 SUMMARY:
+  Total Samples: 1478
+  Total Errors:  142
+  Error Rate:    9.61%
+  Accuracy:      90.39%
+
+🔄 TOP CONFUSION PATTERNS:
+  1. Chukku Kolam → Pulli Kolam
+     Count: 48 (3.25%)
+  2. Line Kolam → Pulli Kolam
+     Count: 48 (3.25%)
+  3. Freehand Kolam → Pulli Kolam
+     Count: 46 (3.11%)
+
+❌ ERRORS BY TRUE CLASS:
+
+  PULLI KOLAM:
+    Total: 1336, Errors: 0
+    Error Rate: 0.00%
+    Accuracy: 100.00%
+
+  CHUKKU KOLAM:
+    Total: 48, Errors: 48
+    Error Rate: 100.00%
+    Accuracy: 0.00%
+    Misclassified as:
+      • Pulli Kolam: 48 (100.0%)
+
+  LINE KOLAM:
+    Total: 48, Errors: 48
+    Error Rate: 100.00%
+    Accuracy: 0.00%
+    Misclassified as:
+      • Pulli Kolam: 48 (100.0%)
+
+  FREEHAND KOLAM:
+    Total: 46, Errors: 46
+    Error Rate: 100.00%
+    Accuracy: 0.00%
+    Misclassified as:
+      • Pulli Kolam: 46 (100.0%)
+
+🎯 CONFIDENCE ANALYSIS:
+  Error Confidence: 29.98% (avg)
+  Correct Confidence: 29.98% (avg)
+
+  Error Distribution:
+    High Confidence Errors: 0 (0.0%)
+    Medium Confidence: 0 (0.0%)
+    Low Confidence: 142 (100.0%)
+
+💡 RECOMMENDATIONS:
+  ⚠️  Chukku Kolam has high error rate (100.0%)
+     → Review training data and feature extraction
+  ⚠️  Frequent confusion: Chukku Kolam → Pulli Kolam
+     → Enhance discriminative features between these classes
+
+======================================================================
+
+======================================================================
+CONFIDENCE EVALUATION REPORT
+======================================================================
+
+📊 CONFIDENCE STATISTICS:
+  Mean:   29.98%
+  Median: 29.98%
+  Std:    0.00%
+  Range:  [29.98%, 29.98%]
+  IQR:    [29.98%, 29.98%]
+
+⚖️  CALIBRATION METRICS:
+  ECE (Expected Calibration Error): 0.6041
+  MCE (Maximum Calibration Error):  0.6041
+  Quality: ❌ Poor
+
+  Calibration by Confidence Bin:
+    [0.2-0.3]: Conf=30.0%, Acc=90.4%, Gap=-60.4% (n=1478)
+
+🔗 CONFIDENCE-ACCURACY CORRELATION:
+  Pearson r:  nan (p=nan)
+  Spearman ρ: nan (p=nan)
+  Strength: Weak
+  Interpretation: Weak correlation between confidence and correctness
+
+⚠️  OVERCONFIDENCE ANALYSIS:
+  Status: ✅ None detected
+
+📉 UNDERCONFIDENCE ANALYSIS:
+  Status: DETECTED (Severity: High)
+  Count: 1336 (90.39%)
+  Mean Confidence: 29.98%
+  Description: 1336 correct predictions with confidence <50.0%
+
+💡 RECOMMENDATIONS:
+  ⚠️  High ECE (0.6041) - Consider:
+     • Temperature scaling
+     • Platt scaling
+     • Isotonic regression
+
+======================================================================

@@ -1,0 +1,16 @@
+# Step 7 - User Interface Requirements
+# Install with: pip install -r requirements_step7.txt
+
+# Core web framework
+streamlit>=1.28.0
+
+# Visualization
+plotly>=5.17.0
+
+# Already required from previous steps (ensure installed)
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.24.0
+opencv-python>=4.8.0
+pillow>=10.0.0
+scikit-learn>=1.3.0

@@ -1,0 +1,52 @@
+# Python Requirements for Kolam Pattern Classification System
+# Steps 1, 2, 3: Dataset Preparation, Preprocessing, and Feature Extraction
+
+# ============= CORE DEPENDENCIES (STEPS 1-3) =============
+
+# Image Processing
+opencv-python>=4.8.0        # Image processing, morphology, edge detection
+numpy>=1.24.0               # Array operations, numerical computing
+Pillow>=10.0.0              # PIL, image format conversion
+
+# Data Handling & Analysis
+pandas>=2.0.0               # Data manipulation and CSV handling
+scipy>=1.10.0               # Scientific computing (distance transforms, labeling)
+scikit-image>=0.21.0        # Advanced image processing (skeleton, label analysis)
+scikit-learn>=1.3.0         # ML utilities (PCA, metrics)
+
+# Visualization
+matplotlib>=3.7.0           # Plotting and visualization
+seaborn>=0.12.0             # Statistical visualization (optional but recommended)
+
+# Progress tracking
+tqdm>=4.65.0                # Progress bars for batch processing
+
+# ============= DEEP LEARNING (STEP 3) =============
+
+# PyTorch (recommended for feature extraction)
+torch>=2.0.0                # Deep learning framework
+torchvision>=0.15.0         # Vision utilities (pre-trained models, transforms)
+
+# Alternative: TensorFlow/Keras (optional)
+# tensorflow>=2.13.0        # Uncomment if using TensorFlow instead
+
+# ============= DEVELOPMENT (OPTIONAL) =============
+
+# ipython>=8.12.0            # Interactive Python shell
+# jupyter>=1.0.0             # Jupyter notebooks
+# pytest>=7.3.0              # Unit testing
+
+# ============= INSTALLATION INSTRUCTIONS =============
+# 
+# Full installation (recommended):
+#   pip install -r requirements.txt
+#
+# Minimal installation (CPU only):
+#   pip install opencv-python numpy pandas matplotlib tqdm scipy scikit-image scikit-learn Pillow
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+#
+# With GPU support (CUDA 11.8):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+#
+# Verify installation:
+#   python -c "import torch; print(f'PyTorch: {torch.__version__}, GPU: {torch.cuda.is_available()}')"

@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# PyTorch Models
+*.pth
+*.pt
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dataset (large files)
+kolam_dataset/
+KOLAM DESIGN/
+*.zip
+*.tar.gz
+
+# Logs
+*.log
+
+# Temporary files
+*_backup_*.py
+*_corrupted.py
+*.tmp
+
+# Streamlit
+.streamlit/
