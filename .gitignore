@@ -25,9 +25,13 @@ venv/
 ENV/
 env/
 
-# PyTorch Models
+# PyTorch Models (exclude trained models except the deployment model)
 *.pth
 *.pt
+
+# But include our trained model for deployment
+!kolam_dataset/05_trained_models/balanced_training/best_model_balanced.pth
+!kolam_dataset/05_trained_models/balanced_training/balanced_training_results.json
 
 # Jupyter Notebook
 .ipynb_checkpoints

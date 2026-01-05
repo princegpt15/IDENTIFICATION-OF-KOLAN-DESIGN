@@ -288,6 +288,27 @@ st.markdown("""
     h1, h2, h3 {
         font-family: 'Playfair Display', serif;
     }
+    
+    /* Watermark Styles */
+    .watermark {
+        position: fixed;
+        bottom: 10px;
+        right: 20px;
+        font-size: 0.85rem;
+        color: rgba(102, 126, 234, 0.6);
+        font-weight: 600;
+        z-index: 999;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 8px 15px;
+        border-radius: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border: 1px solid rgba(102, 126, 234, 0.3);
+    }
+    
+    .watermark:hover {
+        color: #667eea;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -526,14 +547,18 @@ def main():
         st.markdown("""
         <div class="kolam-border">
             <h3 style="color: #667eea; margin-top: 0;">📖 About This App</h3>
-            <p style="line-height: 1.8;">
-                🌟 Classifies traditional <b>Indian Kolam patterns</b> into 4 distinct categories<br><br>
-                🎯 <b>Model Performance:</b><br>
-                • Macro F1-Score: <b>91.0%</b><br>
-                • Training Samples: <b>26,520</b><br>
-                • Architecture: <b>Neural Network</b><br>
-                • Loss Function: <b>Focal Loss</b><br><br>
-                ⚡ <b>Lightning Fast Inference</b>
+            <p style="line-height: 1.8; color: #2c3e50; font-size: 1.05rem;">
+                🌟 <strong>Kolam Pattern Classifier</strong> uses deep learning to classify traditional Indian Kolam patterns into 4 distinct categories.<br><br>
+                
+                🎯 <strong style="color: #667eea;">Model Performance:</strong><br>
+                <span style="padding-left: 20px;">• <strong>Macro F1-Score:</strong> 91.0%</span><br>
+                <span style="padding-left: 20px;">• <strong>Test Accuracy:</strong> 90.67%</span><br>
+                <span style="padding-left: 20px;">• <strong>Training Samples:</strong> 17,280</span><br>
+                <span style="padding-left: 20px;">• <strong>Architecture:</strong> Hybrid CNN + Features</span><br>
+                <span style="padding-left: 20px;">• <strong>Loss Function:</strong> Focal Loss (Balanced)</span><br><br>
+                
+                ⚡ <strong style="color: #e74c3c;">Lightning Fast Inference:</strong> <em>Results in seconds!</em><br>
+                🎨 <strong style="color: #16a085;">Cultural Preservation:</strong> <em>Bridging tradition with technology</em>
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -541,22 +566,30 @@ def main():
         st.markdown("""
         <div class="kolam-border" style="margin-top: 15px;">
             <h3 style="color: #FF6B6B; margin-top: 0;">🚀 How to Use</h3>
-            <div style="line-height: 2;">
-                <b>1️⃣</b> Upload your Kolam image<br>
-                <b>2️⃣</b> Click "Classify Image"<br>
-                <b>3️⃣</b> View instant results<br>
-                <b>4️⃣</b> Check confidence scores<br>
+            <div style="line-height: 2.2; color: #2c3e50; font-size: 1.05rem;">
+                <div style="padding: 8px 0; border-bottom: 1px solid rgba(102, 126, 234, 0.2);">
+                    <strong style="color: #667eea;">1️⃣ Upload Image:</strong> Click the upload button and select your Kolam image (JPG, PNG, JPEG)
+                </div>
+                <div style="padding: 8px 0; border-bottom: 1px solid rgba(102, 126, 234, 0.2);">
+                    <strong style="color: #667eea;">2️⃣ Classify:</strong> Click the <em>"🎯 Classify Image"</em> button to start analysis
+                </div>
+                <div style="padding: 8px 0; border-bottom: 1px solid rgba(102, 126, 234, 0.2);">
+                    <strong style="color: #667eea;">3️⃣ View Results:</strong> See the predicted category with confidence score
+                </div>
+                <div style="padding: 8px 0;">
+                    <strong style="color: #667eea;">4️⃣ Explore:</strong> Check detailed confidence breakdown for all 4 categories
+                </div>
             </div>
         </div>
         """, unsafe_allow_html=True)
         
         st.markdown("""
         <div class="kolam-border" style="margin-top: 15px;">
-            <h3 style="color: #4ECDC4; margin-top: 0;">🎭 Class Types</h3>
+            <h3 style="color: #4ECDC4; margin-top: 0;">🎭 Kolam Categories</h3>
         """, unsafe_allow_html=True)
         
         for name, desc in CLASS_DESCRIPTIONS.items():
-            st.markdown(f"<div style='padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);'>{desc}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div style='padding: 10px 5px; border-bottom: 1px solid rgba(102, 126, 234, 0.2); color: #2c3e50; font-size: 1.05rem; line-height: 1.6;'><strong style='color: #667eea;'>{name}:</strong> {desc}</div>", unsafe_allow_html=True)
         
         st.markdown("</div>", unsafe_allow_html=True)
         
@@ -776,13 +809,13 @@ def main():
             st.markdown("""
             <div class="kolam-border">
                 <h3 style="color: #667eea;">🎯 Model Architecture</h3>
-                <ul style="line-height: 2;">
-                    <li><b>Input Features:</b> 26 handcrafted features</li>
-                    <li><b>Hidden Layers:</b> 128 → 64 → 32 neurons</li>
-                    <li><b>Activation:</b> ReLU with BatchNorm</li>
-                    <li><b>Dropout:</b> 0.3, 0.3, 0.2</li>
-                    <li><b>Output Classes:</b> 4 Kolam types</li>
-                    <li><b>Loss Function:</b> Focal Loss (α=0.25, γ=2.0)</li>
+                <ul style="line-height: 2.2; color: #2c3e50; font-size: 1.05rem;">
+                    <li><strong style="color: #667eea;">Input Features:</strong> 26 handcrafted features</li>
+                    <li><strong style="color: #667eea;">Hidden Layers:</strong> 128 → 64 → 32 neurons</li>
+                    <li><strong style="color: #667eea;">Activation:</strong> ReLU with BatchNorm</li>
+                    <li><strong style="color: #667eea;">Dropout:</strong> 0.3, 0.3, 0.2</li>
+                    <li><strong style="color: #667eea;">Output Classes:</strong> 4 Kolam types</li>
+                    <li><strong style="color: #667eea;">Loss Function:</strong> Focal Loss (α=0.25, γ=2.0)</li>
                 </ul>
             </div>
             """, unsafe_allow_html=True)
@@ -791,13 +824,13 @@ def main():
             st.markdown("""
             <div class="kolam-border">
                 <h3 style="color: #FF6B6B;">📈 Performance Metrics</h3>
-                <ul style="line-height: 2;">
-                    <li><b>Macro F1-Score:</b> 91.0%</li>
-                    <li><b>Test Accuracy:</b> 90.67%</li>
-                    <li><b>Training Samples:</b> 17,280</li>
-                    <li><b>Validation Samples:</b> 4,610</li>
-                    <li><b>Test Samples:</b> 4,630</li>
-                    <li><b>Training Method:</b> Balanced Sampling</li>
+                <ul style="line-height: 2.2; color: #2c3e50; font-size: 1.05rem;">
+                    <li><strong style="color: #FF6B6B;">Macro F1-Score:</strong> 91.0%</li>
+                    <li><strong style="color: #FF6B6B;">Test Accuracy:</strong> 90.67%</li>
+                    <li><strong style="color: #FF6B6B;">Training Samples:</strong> 17,280</li>
+                    <li><strong style="color: #FF6B6B;">Validation Samples:</strong> 4,610</li>
+                    <li><strong style="color: #FF6B6B;">Test Samples:</strong> 4,630</li>
+                    <li><strong style="color: #FF6B6B;">Training Method:</strong> Balanced Sampling</li>
                 </ul>
             </div>
             """, unsafe_allow_html=True)
@@ -837,17 +870,17 @@ def main():
         st.markdown("""
         <div class="kolam-border" style="margin-top: 20px;">
             <h3 style="color: #667eea; text-align: center;">ℹ️ About the Features</h3>
-            <p style="line-height: 1.8;">
-                Our model extracts <b>26 handcrafted features</b> from each Kolam image:<br><br>
-                • <b>Basic Statistics:</b> Mean intensity, standard deviation<br>
-                • <b>Edge Features:</b> Canny edge detection, edge density<br>
-                • <b>Color Features:</b> RGB channel distributions<br>
-                • <b>Texture Features:</b> Sobel gradients in X and Y directions<br>
-                • <b>Circle Detection:</b> Hough circle transform for dot patterns<br>
-                • <b>Contour Analysis:</b> Shape complexity, area distributions<br>
-                • <b>Symmetry Measures:</b> Horizontal and vertical symmetry<br>
-                • <b>Line Detection:</b> Hough line transform for line patterns<br>
-                • <b>Additional Features:</b> Aspect ratio, intensity distributions<br>
+            <p style="line-height: 2; color: #2c3e50; font-size: 1.05rem;">
+                Our model extracts <strong style="color: #667eea;">26 handcrafted features</strong> from each Kolam image:<br><br>
+                <span style="padding-left: 10px;">• <strong style="color: #667eea;">Basic Statistics:</strong> Mean intensity, standard deviation</span><br>
+                <span style="padding-left: 10px;">• <strong style="color: #667eea;">Edge Features:</strong> Canny edge detection, edge density</span><br>
+                <span style="padding-left: 10px;">• <strong style="color: #667eea;">Color Features:</strong> RGB channel distributions</span><br>
+                <span style="padding-left: 10px;">• <strong style="color: #667eea;">Texture Features:</strong> Sobel gradients in X and Y directions</span><br>
+                <span style="padding-left: 10px;">• <strong style="color: #667eea;">Circle Detection:</strong> Hough circle transform for dot patterns</span><br>
+                <span style="padding-left: 10px;">• <strong style="color: #667eea;">Contour Analysis:</strong> Shape complexity, area distributions</span><br>
+                <span style="padding-left: 10px;">• <strong style="color: #667eea;">Symmetry Measures:</strong> Horizontal and vertical symmetry</span><br>
+                <span style="padding-left: 10px;">• <strong style="color: #667eea;">Line Detection:</strong> Hough line transform for line patterns</span><br>
+                <span style="padding-left: 10px;">• <strong style="color: #667eea;">Additional Features:</strong> Aspect ratio, intensity distributions</span><br>
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -869,6 +902,19 @@ def main():
         <div style="font-size: 1.5rem; margin-top: 20px;">
             Made with ❤️ & 🤖
         </div>
+        <div style="margin-top: 25px; padding-top: 20px; border-top: 2px solid rgba(102, 126, 234, 0.2);">
+            <div style="font-size: 1.1rem; color: #667eea; font-weight: 700;">
+                👑 Developed by Prince
+            </div>
+            <div style="font-size: 0.85rem; color: #999; margin-top: 5px;">
+                © 2026 All Rights Reserved
+            </div>
+        </div>
+    </div>
+    
+    <!-- Floating Watermark -->
+    <div class="watermark">
+        👑 Prince
     </div>
     """, unsafe_allow_html=True)
 
